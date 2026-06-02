@@ -31,7 +31,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f4f6f8; }
         .reveal-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal-content.open { max-height: 2500px; }
+        .reveal-content.open { max-height: 2000px; }
     </style>
 </head>
 <body class="text-gray-900 antialiased flex flex-col min-h-screen bg-[#f4f6f8]">
@@ -81,7 +81,7 @@
                         <option value="Metals & Heavy Mining Operations">Metals & Heavy Mining Operations</option>
                         <option value="Aerospace & Defense Contractors">Aerospace & Defense Contractors</option>
                         <option value="E-Commerce Platforms & Direct-to-Consumer">E-Commerce Platforms & Direct-to-Consumer</option>
-                        <option value="Insurance & Risk Underwriting">Insurance & Risk Under underwriting</option>
+                        <option value="Insurance & Risk Underwriting">Insurance & Risk Underwriting</option>
                         <option value="Infrastructure, Construction & Smart Cities">Infrastructure, Construction & Smart Cities</option>
                         <option value="Water Utilities & Waste Systems">Water Utilities & Waste Systems</option>
                         <option value="Asset Management & Sovereign Wealth Funds">Asset Management & Sovereign Wealth Funds</option>
@@ -149,25 +149,25 @@
             const generatedCaseData = parseCaseEngineLogic(industry, caseType);
             
             workspace.innerHTML = `
-                <!-- EXECUTIVE BRIEFING OVERVIEW -->
+                <!-- STRATEGIC BRIEFING OVERVIEW -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="bg-[#051c2c] text-white p-6 border-b border-gray-800">
                         <span class="text-xs font-bold uppercase tracking-widest text-[#005f9e] bg-[#051c2c] block mb-1">Active Case Diagnostic Suite</span>
-                        <h2 class="text-3xl font-bold tracking-tight">${generatedCaseData.clientName}</h2>
+                        <h2 class="text-2xl font-bold tracking-tight">${generatedCaseData.title}</h2>
                     </div>
                     <div class="p-8 space-y-6">
                         <div>
-                            <h3 class="text-sm font-bold uppercase tracking-wider text-[#051c2c] mb-1">Client Goal</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Client Goal</h3>
                             <p class="text-base font-semibold text-gray-900">${generatedCaseData.clientGoal}</p>
                         </div>
                         <hr class="border-gray-100" />
                         <div>
-                            <h3 class="text-sm font-bold uppercase tracking-wider text-[#051c2c] mb-2">Situation Description</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Situation Description</h3>
                             <div class="text-sm text-gray-700 leading-relaxed space-y-4">${generatedCaseData.situation}</div>
                         </div>
                         <hr class="border-gray-100" />
                         <div>
-                            <h3 class="text-sm font-bold uppercase tracking-wider text-[#051c2c] mb-2">McKinsey Study</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">McKinsey Study Directive</h3>
                             <div class="bg-slate-50 border-l-4 border-[#051c2c] p-4 text-sm font-medium text-[#051c2c] italic rounded-r">
                                 ${generatedCaseData.study}
                             </div>
@@ -175,15 +175,11 @@
                     </div>
                 </div>
 
-                <div class="text-center mb-8">
-                    <h2 class="text-xl font-bold text-gray-800 uppercase tracking-widest">Practice Case Questions</h2>
-                    <div class="w-16 h-1 bg-[#005f9e] mx-auto mt-3"></div>
-                </div>
-
                 <!-- QUESTION 1 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Question 1: Structuring (Qualitative Framework)</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 1</span>
+                        <span class="text-xs font-mono text-gray-400">Qualitative Focus</span>
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-bold text-[#051c2c] mb-6">${generatedCaseData.q1_prompt}</h3>
@@ -200,13 +196,11 @@
                 <!-- QUESTION 2 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Question 2: The Quantitative Stress-Test (Math)</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 2</span>
+                        <span class="text-xs font-mono text-gray-400">Numerical Core</span>
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-bold text-[#051c2c] mb-6">${generatedCaseData.q2_prompt}</h3>
-                        <div class="mb-6 p-3 bg-blue-50 border border-blue-100 text-[#005f9e] text-xs font-semibold rounded">
-                            Helpful hint: Calculators are not allowed—you may want to write out your calculations on paper.
-                        </div>
                         <button id="btn-ans-2" onclick="toggleAnswerContainer('ans-2')" class="w-full flex justify-between items-center border border-gray-200 rounded p-4 text-sm font-semibold text-[#005f9e] hover:bg-slate-50 transition bg-white shadow-sm">
                             <span>Reveal Ideal Answer &bull; Calculation Chain</span>
                             <span id="ind-ans-2" class="text-xs font-mono">&#9662;</span>
@@ -220,21 +214,16 @@
                 <!-- QUESTION 3 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Question 3: Data Synthesis & Interpretation (The Exhibit)</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 3</span>
+                        <span class="text-xs font-mono text-gray-400">Chart Interface</span>
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-bold text-[#051c2c] mb-6">${generatedCaseData.q3_prompt}</h3>
-                        
-                        <!-- Rich HTML Data Table & Chart Combo -->
-                        <div class="w-full bg-white p-6 rounded border border-gray-200 shadow-inner mb-6">
-                            <div class="overflow-x-auto mb-8 border border-gray-200 rounded">
-                                ${generatedCaseData.dataTable}
-                            </div>
-                            <div class="w-full h-[320px] relative">
+                        <div class="w-full bg-white p-4 rounded border border-gray-200 shadow-inner flex items-center justify-center min-h-[400px] mb-6 relative">
+                            <div class="w-full h-[360px] relative">
                                 <canvas id="canvasRenderZone"></canvas>
                             </div>
                         </div>
-
                         <button id="btn-ans-3" onclick="toggleAnswerContainer('ans-3')" class="w-full flex justify-between items-center border border-gray-200 rounded p-4 text-sm font-semibold text-[#005f9e] hover:bg-slate-50 transition bg-white shadow-sm">
                             <span>Reveal Ideal Answer &bull; Data Interpretation Framework</span>
                             <span id="ind-ans-3" class="text-xs font-mono">&#9662;</span>
@@ -248,12 +237,13 @@
                 <!-- QUESTION 4 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Question 4: The Strategic Pivot (The Persona Challenge)</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 4</span>
+                        <span class="text-xs font-mono text-gray-400">Synthesis Rubric</span>
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-bold text-[#051c2c] mb-6">${generatedCaseData.recommendation_prompt}</h3>
                         <button id="btn-ans-4" onclick="toggleAnswerContainer('ans-4')" class="w-full flex justify-between items-center border border-gray-200 rounded p-4 text-sm font-semibold text-[#005f9e] hover:bg-slate-50 transition bg-white shadow-sm">
-                            <span>Reveal Ideal Answer &bull; Executive Mitigation Strategy</span>
+                            <span>Reveal Ideal Answer &bull; Strategic Expansion Strategy</span>
                             <span id="ind-ans-4" class="text-xs font-mono">&#9662;</span>
                         </button>
                         <div id="ans-4" class="reveal-content bg-white">
@@ -287,205 +277,375 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        title: { display: true, text: config.title, color: '#051c2c', font: { family: 'Inter', size: 14, weight: '700' }, padding: { bottom: 15 } },
-                        legend: { display: ['bubble', 'dualAxis', 'stackedBar100', 'groupedBar', 'mixed'].includes(type), labels: { font: { family: 'Inter', size: 11, weight: '500' }, color: '#334155' } }
+                        title: {
+                            display: true,
+                            text: config.title,
+                            color: '#051c2c',
+                            font: { family: 'Inter', size: 14, weight: '700' },
+                            padding: { bottom: 15 }
+                        },
+                        legend: {
+                            display: ['bubble', 'dualAxis', 'stackedBar100', 'groupedBar', 'mixed'].includes(type),
+                            labels: { font: { family: 'Inter', size: 11, weight: '500' }, color: '#334155' }
+                        }
                     }
                 }
             };
 
-            // Programmatic Mapping for Chart generation (Abridged for focus)
-            chartJsConfig.type = type === 'waterfall' || type === 'stackedBar100' || type === 'groupedBar' ? 'bar' : type === 'bubble' ? 'bubble' : 'line';
-            chartJsConfig.data = config;
-            
-            if (type === 'waterfall') {
-                chartJsConfig.options.scales = { y: { title: { display: true, text: 'Value Impact ($M)' } } };
-            } else if (type === 'stackedBar100') {
-                chartJsConfig.options.scales = { x: { stacked: true }, y: { stacked: true, max: 100 } };
-            } else {
-                 chartJsConfig.options.scales = { y: { beginAtZero: true } };
+            switch(type) {
+                case 'bubble':
+                    chartJsConfig.type = 'bubble';
+                    chartJsConfig.data = {
+                        datasets: config.datasets.map((ds, i) => ({
+                            label: ds.label,
+                            data: ds.data,
+                            backgroundColor: i === 0 ? 'rgba(0, 95, 158, 0.75)' : 'rgba(51, 65, 85, 0.65)'
+                        }))
+                    };
+                    chartJsConfig.options.scales = {
+                        x: { title: { display: true, text: 'Market Attractiveness Index (0-100)', font: { weight: '600' } } },
+                        y: { title: { display: true, text: 'Relative Competitive Position (0-100)', font: { weight: '600' } } }
+                    };
+                    break;
+
+                case 'inverted':
+                    chartJsConfig.type = 'line';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            label: config.datasets[0].label,
+                            data: config.datasets[0].data,
+                            borderColor: '#005f9e',
+                            backgroundColor: 'rgba(0, 95, 158, 0.05)',
+                            fill: true,
+                            tension: 0.1
+                        }]
+                    };
+                    chartJsConfig.options.scales = {
+                        y: { reverse: true, title: { display: true, text: 'Operational Cost Depth Rank (Inverted)', font: { weight: '600' } } }
+                    };
+                    break;
+
+                case 'waterfall':
+                    chartJsConfig.type = 'bar';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            label: config.datasets[0].label,
+                            data: config.datasets[0].data,
+                            backgroundColor: config.labels.map((_, i) => i === 0 || i === config.labels.length - 1 ? '#051c2c' : '#005f9e')
+                        }]
+                    };
+                    break;
+
+                case 'dualAxis':
+                    chartJsConfig.type = 'bar';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [
+                            { type: 'bar', label: config.datasets[0].label, data: config.datasets[0].data, backgroundColor: '#005f9e', yAxisID: 'y' },
+                            { type: 'line', label: 'EBITDA Contribution Margin %', data: config.datasets[0].extraData, borderColor: '#e06b20', yAxisID: 'y1', borderWidth: 3, fill: false }
+                        ]
+                    };
+                    chartJsConfig.options.scales = {
+                        y: { type: 'linear', position: 'left', title: { display: true, text: 'Absolute Metric Value ($M)' } },
+                        y1: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'Percentage Scale (%)' } }
+                    };
+                    break;
+
+                case 'stackedBar100':
+                    chartJsConfig.type = 'bar';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: config.datasets.map((ds, idx) => ({
+                            label: ds.label,
+                            data: ds.data,
+                            backgroundColor: idx === 0 ? '#051c2c' : idx === 1 ? '#005f9e' : '#94a3b8'
+                        }))
+                    };
+                    chartJsConfig.options.scales = {
+                        x: { stacked: true },
+                        y: { stacked: true, max: 100, title: { display: true, text: 'Percentage Split (%)' } }
+                    };
+                    break;
+
+                case 'radar':
+                    chartJsConfig.type = 'radar';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: config.datasets.map(ds => ({
+                            label: ds.label,
+                            data: ds.data,
+                            borderColor: '#005f9e',
+                            backgroundColor: 'rgba(0, 95, 158, 0.2)'
+                        }))
+                    };
+                    break;
+
+                case 'scatter':
+                    chartJsConfig.type = 'scatter';
+                    chartJsConfig.data = {
+                        datasets: [{
+                            label: config.datasets[0].label,
+                            data: config.datasets[0].data,
+                            backgroundColor: '#051c2c'
+                        }]
+                    };
+                    break;
+
+                case 'stepline':
+                    chartJsConfig.type = 'line';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            label: config.datasets[0].label,
+                            data: config.datasets[0].data,
+                            stepped: true,
+                            borderColor: '#005f9e',
+                            fill: false
+                        }]
+                    };
+                    break;
+
+                case 'polarArea':
+                    chartJsConfig.type = 'polarArea';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            data: config.datasets[0].data,
+                            backgroundColor: ['#051c2c', '#005f9e', '#475569', '#94a3b8', '#cbd5e1']
+                        }]
+                    };
+                    break;
+
+                case 'doughnut':
+                    chartJsConfig.type = 'doughnut';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            data: config.datasets[0].data,
+                            backgroundColor: ['#051c2c', '#005f9e', '#64748b', '#cbd5e1']
+                        }]
+                    };
+                    break;
+
+                case 'line':
+                    chartJsConfig.type = 'line';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            label: config.datasets[0].label,
+                            data: config.datasets[0].data,
+                            borderColor: '#051c2c',
+                            borderWidth: 2,
+                            fill: false
+                        }]
+                    };
+                    break;
+
+                case 'bar':
+                    chartJsConfig.type = 'bar';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            label: config.datasets[0].label,
+                            data: config.datasets[0].data,
+                            backgroundColor: '#005f9e'
+                        }]
+                    };
+                    break;
+
+                case 'groupedBar':
+                    chartJsConfig.type = 'bar';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [
+                            { label: 'Historical Baseline Status', data: config.datasets[0].data, backgroundColor: '#475569' },
+                            { label: 'Optimized Target State Model', data: config.datasets[0].extraData, backgroundColor: '#005f9e' }
+                        ]
+                    };
+                    break;
+
+                case 'mixed':
+                    chartJsConfig.type = 'bar';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [
+                            { type: 'bar', label: 'CapEx Baseline Allocation', data: config.datasets[0].data, backgroundColor: '#051c2c' },
+                            { type: 'line', label: 'Target Margin Scale Runrate', data: config.datasets[0].extraData, borderColor: '#005f9e', fill: false }
+                        ]
+                    };
+                    break;
+
+                case 'area':
+                    chartJsConfig.type = 'line';
+                    chartJsConfig.data = {
+                        labels: config.labels,
+                        datasets: [{
+                            label: config.datasets[0].label,
+                            data: config.datasets[0].data,
+                            backgroundColor: 'rgba(5, 28, 44, 0.12)',
+                            borderColor: '#051c2c',
+                            fill: true
+                        }]
+                    };
+                    break;
             }
 
             globalChartInstance = new Chart(ctx, chartJsConfig);
         }
 
         function parseCaseEngineLogic(industry, type) {
-            // ==========================================
-            // VARIABILITY ENGINE (Randomized Injection)
-            // ==========================================
-            const fakeCompanies = ["AeroNova Solutions", "Zenith Biologics", "VeloFoods Global", "Horizon Sovereign", "Vanguard Agritech", "Luxis Premium", "Integra Health", "Solari Power", "TelcoLink", "Stera Advanced Materials", "OmniChannel Logistics"];
-            const complications = [
-                "a sudden regulatory shift requiring immediate, capital-intensive compliance overhauls.",
-                "a massive consumer migration to digital-first channels, rendering their legacy brick-and-mortar assets obsolete.",
-                "severe supply chain fragmentation and vendor consolidation driving up sourcing timelines.",
-                "an aggressive low-cost competitor entering the domestic market, triggering a fierce price war.",
-                "unprecedented inflationary pressure on raw materials squeezing historic gross margins."
+            // Context Pools for Procedural Generation Matrix
+            const fakeCompanies = [
+                "AeroNova Solutions", "Zenith Biologics", "VeloFoods Global", "Horizon Sovereign Fund", 
+                "Vanguard Agritech", "Apex Retail Partners", "Luxis Premium Cosmetics", "Integra Health Systems", 
+                "Solari Power Infrastructure", "TelcoLink International", "NovaStream Entertainment", 
+                "Stera Advanced Materials", "OmniChannel Logistics", "CoreQuantum Analytics"
             ];
-            const financials = [
-                "heavy upfront capital investment with strict depreciation milestones",
-                "high-variable operational cost structure tied closely to production volume",
-                "subscription-based recurring revenue model with high customer acquisition costs",
-                "franchise expansion model requiring shared capital burdens"
+            const corporateName = fakeCompanies[Math.floor(Math.random() * fakeCompanies.length)];
+
+            const dynamicIssues = [
+                "is experiencing structural changes due to intense near-shore competition and shifting global trade rules.",
+                "has seen operational margin compression as legacy technology costs outpace digital adoption lines.",
+                "is navigating regulatory overhead disruptions alongside a cooling domestic capital deployment market.",
+                "needs to assess their core footprint asset strategy as capital returns slide lower.",
+                "is facing new distribution network demands that challenge their traditional asset layouts."
             ];
-            const personas = [
-                { title: "Head of Operations", trait: "risk-averse", concern: "quality control failure and process fraud" },
-                { title: "Chief Financial Officer (CFO)", trait: "skeptical", concern: "failing to hit strict payback timelines and breakeven metrics" },
-                { title: "Chief Executive Officer (CEO)", trait: "impatient", concern: "moving too slowly and losing first-mover advantage" },
-                { title: "General Counsel", trait: "compliance-focused", concern: "data privacy violations and legal exposure" }
-            ];
+            const issueParagraph = dynamicIssues[Math.floor(Math.random() * dynamicIssues.length)];
 
-            // Random Selections
-            const clientName = fakeCompanies[Math.floor(Math.random() * fakeCompanies.length)];
-            const selectedComplication = complications[Math.floor(Math.random() * complications.length)];
-            const selectedFinancials = financials[Math.floor(Math.random() * financials.length)];
-            const selectedPersona = personas[Math.floor(Math.random() * personas.length)];
+            // Mathematical Parameter Formulation
+            const baseFixedCost = (Math.floor(Math.random() * 4) + 2) * 20; // 40M, 60M, 80M, 100M
+            const globalVolumeBase = Math.floor(Math.random() * 5) + 8; // 8M to 12M units
+            const wholesalePrice = (Math.random() * 50 + 40).toFixed(2); // $40 to $90
+            const variableOverheadCost = (wholesalePrice * 0.65).toFixed(2); // 65% of wholesale price
+            const unitMargin = (wholesalePrice - variableOverheadCost).toFixed(2);
+            
+            const breakEvenUnits = Math.round((baseFixedCost * 1000000) / unitMargin);
+            const totalRevenueAtVolume = (globalVolumeBase * 1000000 * wholesalePrice);
+            const totalVariableAtVolume = (globalVolumeBase * 1000000 * variableOverheadCost);
+            const explicitEbitdaResult = (totalRevenueAtVolume - totalVariableAtVolume - (baseFixedCost * 1000000));
 
-            // Macro Base Numbers for Math Filter
-            const basePopulations = [50, 100, 200]; 
-            const targetPop = basePopulations[Math.floor(Math.random() * basePopulations.length)]; // 50M, 100M, 200M
-            const demoSplit = [20, 25, 40][Math.floor(Math.random() * 3)]; // 20%, 25%, 40%
-            const conversion = [5, 10][Math.floor(Math.random() * 2)]; // 5%, 10%
-            
-            const rawMarketSize = targetPop * (demoSplit / 100);
-            const capturedUsers = rawMarketSize * (conversion / 100); // in Millions
-            const capturedUnits = capturedUsers * 1000000;
-            
-            const unitPrice = (Math.random() * 40 + 20).toFixed(0); // $20 to $60
-            const unitCost = (unitPrice * 0.4).toFixed(0); // 40% margin cost
-            const unitMargin = unitPrice - unitCost;
-            
-            const fixedCostM = Math.floor(Math.random() * 5 + 2) * 10; // $20M to $60M
-            const breakEvenUnits = (fixedCostM * 1000000) / unitMargin;
-            const projectedProfit = (capturedUnits * unitMargin) - (fixedCostM * 1000000);
-
-            // Chart Configuration Logic
-            const chartPool = ['waterfall', 'stackedBar100', 'groupedBar'];
+            const chartPool = ['bubble', 'inverted', 'waterfall', 'dualAxis', 'stackedBar100', 'radar', 'scatter', 'stepline', 'polarArea', 'doughnut', 'line', 'bar', 'groupedBar', 'mixed', 'area'];
             const targetedChartType = chartPool[Math.floor(Math.random() * chartPool.length)];
 
-            let chartConfig = {
-                title: `Financial Viability Trajectory`,
-                labels: ['Product Line A', 'Product Line B', 'Product Line C'],
-                datasets: [
-                    { label: 'Revenue ($M)', data: [120, 180, 240], backgroundColor: '#051c2c' },
-                    { label: 'Operating Cost ($M)', data: [90, 150, 250], backgroundColor: '#005f9e' }
-                ]
+            // Setup dynamic chart configurations
+            let calculatedChartConfig = {
+                title: `Performance Metrics Core Analysis Portfolio`,
+                labels: ['FY22 Base', 'FY23 Delta', 'FY24 Shift', 'FY25 Projection', 'FY26 Target'],
+                datasets: [{ label: 'Macro Operational Impact Track', data: [110, 160, 85, 230, 310], extraData: [14, 25, 40, 55, 80] }]
             };
 
-            // Structured HTML Data Table with Red Herring
-            const dataTableHTML = `
-                <table class="min-w-full text-sm text-left text-gray-700 bg-white">
-                    <thead class="text-xs text-white uppercase bg-[#051c2c]">
-                        <tr>
-                            <th class="px-6 py-3">Business Unit</th>
-                            <th class="px-6 py-3">Market Share</th>
-                            <th class="px-6 py-3">YoY Revenue Growth</th>
-                            <th class="px-6 py-3">Net Operating Margin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b hover:bg-slate-50">
-                            <td class="px-6 py-4 font-semibold">Flagship Core</td>
-                            <td class="px-6 py-4">42%</td>
-                            <td class="px-6 py-4 text-green-600 font-medium">+15.2%</td>
-                            <td class="px-6 py-4 text-red-600 font-bold">-3.4% (Margin Contraction)</td>
-                        </tr>
-                        <tr class="border-b hover:bg-slate-50">
-                            <td class="px-6 py-4 font-semibold">Secondary Line</td>
-                            <td class="px-6 py-4">18%</td>
-                            <td class="px-6 py-4 text-gray-600">+2.1%</td>
-                            <td class="px-6 py-4 text-green-600 font-bold">+12.8%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="px-6 py-4 font-semibold">Digital Ventures</td>
-                            <td class="px-6 py-4">8%</td>
-                            <td class="px-6 py-4 text-green-600 font-medium">+45.0%</td>
-                            <td class="px-6 py-4 text-gray-600">+1.2%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            `;
+            if (targetedChartType === 'waterfall') {
+                calculatedChartConfig.labels = ['Gross Segment Base', 'Pricing Plan Adjustments', 'Churn Overhead Impact', 'Sourcing Supply Synergies', 'Net Performance Operating Baseline'];
+                calculatedChartConfig.datasets[0].data = [[0, 700], [700, 920], [800, 920], [800, 1050], [0, 1050]];
+            } else if (targetedChartType === 'bubble') {
+                calculatedChartConfig.datasets = [
+                    { label: 'Strategic Investment Segments', data: [{ x: 35, y: 60, r: 20 }, { x: 55, y: 90, r: 25 }, { x: 75, y: 75, r: 30 }] },
+                    { label: 'Alternative Regional Opportunities', data: [{ x: 25, y: 30, r: 15 }, { x: 70, y: 45, r: 18 }, { x: 85, y: 85, r: 22 }] }
+                ];
+            } else if (targetedChartType === 'stackedBar100') {
+                calculatedChartConfig.labels = ['Region Alpha', 'Region Beta', 'Region Gamma'];
+                calculatedChartConfig.datasets = [
+                    { label: 'Fixed Structural Costs Profile', data: [40, 45, 35] },
+                    { label: 'Variable Cost Allocations Base', data: [40, 30, 45] },
+                    { label: 'Operating Free Cash Margin Flow', data: [20, 25, 20] }
+                ];
+            }
 
             return {
-                clientName: clientName,
-                title: `${clientName} Strategy`,
-                clientGoal: `${clientName} seeks to redefine its competitive strategy and operational boundaries over the next 18 months to ensure sustained enterprise value.`,
-                situation: `<p>${clientName} is a deeply entrenched player in the ${industry} space. Historically, the company has operated via a traditional B2B distribution network, generating strong, consistent yields. They command approximately $2B in top-line revenue globally, but volume growth has stalled.</p>
-                            <p>Recently, the organization was blindsided by <strong>${selectedComplication}</strong>. This disruption is aggressively eroding their historical moat. Operational complexities are piling up, and the executive team is under massive pressure from activist investors to stem the bleeding and chart a new, aggressive course of action.</p>`,
-                study: `The ${selectedPersona.title} and the Board of Directors have engaged McKinsey & Company to evaluate the root causes of this disruption and build a strategic playbook for a ${type.toLowerCase()} initiative.`,
+                title: `Strategic Transformation Initiative Analysis`,
+                clientGoal: `${corporateName} wants to redesign its strategic positioning and commercial models next year to improve long-term financial results and scale operations safely.`,
+                situation: `<p>${corporateName} ${issueParagraph}</p>
+                            <p>Operating costs have risen unexpectedly over the past 24 months. Higher expenditures on technology infrastructure, core materials, and cross-border logistics continue to narrow historical gross operating margins. The executive leadership team needs a clear view of their baseline performance to evaluate whether a major restructuring plan is viable.</p>
+                            <p>To reverse this trend and protect market share, leadership is exploring structural options. These plans require a rigorous look at asset utilization, fixed operating costs, and long-term investment profiles across all business units.</p>`,
+                study: `How can ${corporateName} reshape its business lines and asset allocations to counter margin pressure and build a sustainable long-term business model?`,
                 
-                // Question 1: Open-ended qualitative framework
-                q1_prompt: `Given the core disruption facing the client, what key operational and market factors should our team evaluate? Build a structured, mutually exclusive, and collectively exhaustive (MECE) approach to assess this. Note: A standard 4Ps or 3Cs framework will not be sufficient here; we need a tailored operational view.`,
+                q1_prompt: `What additional operational details, strategic constraints, and core market data points should the team evaluate to support this strategic assessment?`,
                 q1_answer: `<div class="space-y-4">
-                                <p class="font-bold text-[#051c2c] text-sm uppercase tracking-wide">Custom Structured Approach (MECE):</p>
-                                <p class="text-xs text-gray-500 mb-2">A strong candidate will immediately abandon generic textbook frameworks and build buckets specifically addressing the complication.</p>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div class="bg-slate-50 p-4 border border-gray-200 rounded">
-                                        <p class="font-semibold text-[#005f9e] mb-1">1. Disruption Impact</p>
-                                        <ul class="list-disc pl-4 space-y-1 text-xs text-slate-700">
-                                            <li>Immediate financial exposure caused by the disruption.</li>
-                                            <li>Customer flight risks and churn velocity.</li>
+                                <p class="font-bold text-[#051c2c] text-sm uppercase tracking-wide">Strategic Information Gathering Matrix (MECE Framework Template):</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                                    <div class="bg-white p-4 border border-gray-200 rounded shadow-sm">
+                                        <p class="font-semibold text-[#005f9e] mb-1">1. Granular Financial Profiles</p>
+                                        <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600">
+                                            <li>Fixed overhead tracking and legacy system costs.</li>
+                                            <li>Variable cost structures and labor usage rates.</li>
+                                            <li>Asset depreciation timelines and regional lease metrics.</li>
                                         </ul>
                                     </div>
-                                    <div class="bg-slate-50 p-4 border border-gray-200 rounded">
-                                        <p class="font-semibold text-[#005f9e] mb-1">2. Internal Capability</p>
-                                        <ul class="list-disc pl-4 space-y-1 text-xs text-slate-700">
-                                            <li>Flexibility of current assets under the new reality.</li>
-                                            <li>Capital reserves available to fund a transition.</li>
+                                    <div class="bg-white p-4 border border-gray-200 rounded shadow-sm">
+                                        <p class="font-semibold text-[#005f9e] mb-1">2. Competitive Landscape Shifts</p>
+                                        <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600">
+                                            <li>Competitor price moves and market share dynamics.</li>
+                                            <li>Customer segment churn rates and cost to acquire.</li>
+                                            <li>Value pool changes across regional supply corridors.</li>
                                         </ul>
                                     </div>
-                                    <div class="bg-slate-50 p-4 border border-gray-200 rounded">
-                                        <p class="font-semibold text-[#005f9e] mb-1">3. Strategic Alternatives</p>
-                                        <ul class="list-disc pl-4 space-y-1 text-xs text-slate-700">
-                                            <li>M&A opportunities to acquire missing capabilities.</li>
-                                            <li>Timeline and risks of building solutions in-house.</li>
+                                    <div class="bg-white p-4 border border-gray-200 rounded shadow-sm">
+                                        <p class="font-semibold text-[#005f9e] mb-1">3. Structural Hurdles</p>
+                                        <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600">
+                                            <li>Regulatory changes and compliance requirements.</li>
+                                            <li>Supply network risks and logistical constraints.</li>
+                                            <li>Technology integration timelines and talent gaps.</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>`,
                 
-                // Question 2: Math
-                q2_prompt: `The client is evaluating a massive pivot requiring a <strong>${selectedFinancials}</strong>. The total macro addressable market in our target region is ${targetPop} Million people. Historical data shows that exactly ${demoSplit}% of this population fits our core buyer demographic. Under the new model, we project a ${conversion}% conversion rate of that core demographic in Year 1.<br><br>If the new model incurs $${fixedCostM} Million in fixed infrastructure costs, and we net a $${unitMargin} margin per converted customer, what is our projected Year 1 profit or loss?`,
+                q2_prompt: `The client's central asset operates with a total annual fixed infrastructure cost of $${baseFixedCost} Million. Current annual product output is running at exactly ${globalVolumeBase} Million units. The current market sets a wholesale contract price point of $${wholesalePrice} per unit, while unit variable operating costs are locked at $${variableOverheadCost}. Based on these metrics, what is the current annual EBITDA runrate, and what total volume is required to break even?`,
                 q2_answer: `<div class="space-y-3">
-                                <p class="font-semibold text-gray-900 border-b pb-2">Step-by-Step Calculation Flow:</p>
-                                <p><strong>1. Identify Core Buyer Base:</strong><br>
-                                <span class="text-slate-600">${targetPop}M total population &times; ${demoSplit}% demographic split = <strong>${rawMarketSize} Million core prospects</strong></span></p>
+                                <p class="font-semibold text-gray-900">Mathematical Calculation Process:</p>
+                                <p>1. Find the unit contribution margin: <br>
+                                <span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">Contribution Margin = Wholesale Price ($${wholesalePrice}) - Unit Variable Cost ($${variableOverheadCost})</span><br>
+                                <span class="font-mono font-bold text-gray-800">$${wholesalePrice} - $${variableOverheadCost} = $${unitMargin} per unit</span></p>
                                 
-                                <p><strong>2. Calculate Captured Volume:</strong><br>
-                                <span class="text-slate-600">${rawMarketSize}M prospects &times; ${conversion}% conversion rate = <strong>${capturedUsers} Million users (${capturedUnits.toLocaleString()} units)</strong></span></p>
+                                <p>2. Calculate current EBITDA performance: <br>
+                                <span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">EBITDA = (Volume &times; Unit Margin) - Fixed Costs</span><br>
+                                <span class="font-mono text-gray-800">(${globalVolumeBase}M &times; $${unitMargin}) - $${baseFixedCost}M = </span><span class="font-mono font-bold text-gray-800">$${(explicitEbitdaResult / 1000000).toFixed(2)} Million</span></p>
                                 
-                                <p><strong>3. Calculate Total Contribution Margin:</strong><br>
-                                <span class="text-slate-600">${capturedUnits.toLocaleString()} units &times; $${unitMargin} margin/unit = <strong>$${(capturedUnits * unitMargin).toLocaleString()}</strong></span></p>
+                                <p>3. Calculate break-even volume limits: <br>
+                                <span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">Break-Even Volume = Fixed Costs ($${baseFixedCost}M) / Unit Margin ($${unitMargin})</span><br>
+                                <span class="font-mono font-bold text-gray-800">${breakEvenUnits.toLocaleString()} Units</span></p>
                                 
-                                <p><strong>4. Deduct Fixed Costs for Net Profit:</strong><br>
-                                <span class="text-slate-600">$${(capturedUnits * unitMargin / 1000000).toFixed(2)}M - $${fixedCostM}M fixed costs = <strong class="${projectedProfit >= 0 ? 'text-green-600' : 'text-red-600'}">$${(projectedProfit / 1000000).toFixed(2)} Million</strong></span></p>
-                            </div>`,
-                
-                // Question 3: Data Exhibit
-                q3_prompt: `Our data science team pulled the latest quarterly performance metrics across our three primary business units. Please review the structured data table and accompanying chart. What counter-intuitive trend do you observe, and what strategic intervention would you recommend based on this data?`,
-                dataTable: dataTableHTML,
-                q3_answer: `<div class="space-y-3">
-                                <p class="font-semibold text-[#051c2c]">Exhibit Interpretation Rubric:</p>
-                                <ul class="list-disc pl-5 space-y-2 text-slate-700">
-                                    <li><strong class="text-red-600">Identifying the Red Herring:</strong> A top candidate must immediately spot that while the "Flagship Core" boasts massive 42% market share and 15.2% revenue growth, its <strong>Net Operating Margin has collapsed to -3.4%</strong>. They are effectively buying revenue at a loss.</li>
-                                    <li><strong class="text-[#051c2c]">Synthesis & Next Steps:</strong> The candidate should recommend an immediate halt to aggressive discounting or marketing spend on the Flagship line, and initiate a pricing architecture review. Furthermore, capital should be reallocated to the "Secondary Line," which exhibits highly efficient, profitable growth (+12.8% margin).</li>
-                                </ul>
-                            </div>`,
-                
-                // Question 4: Persona Pivot
-                recommendation_prompt: `You are preparing to finalize the recommendation. Suddenly, the <strong>${selectedPersona.trait} ${selectedPersona.title}</strong> steps into the room. They state clearly: <em>"I will not sign off on this initiative. I am deeply concerned about ${selectedPersona.concern} if we push this through."</em><br><br>Brainstorm 3 to 4 specific, actionable strategies to mitigate their concern and secure their buy-in.`,
-                recommendation_answer: `<div class="space-y-4">
-                                <div class="bg-[#051c2c] text-white p-4 rounded font-medium text-xs border-l-4 border-[#e06b20]">
-                                    <strong>Stakeholder Mitigation Rubric:</strong><br>
-                                    The candidate must demonstrate high emotional intelligence (EQ) and adapt instantly to the ${selectedPersona.title}'s specific fear regarding ${selectedPersona.concern}, rather than repeating generic financial data.
+                                <div class="p-3 bg-blue-50 border border-blue-200 text-[#005f9e] font-semibold rounded text-xs">
+                                    Conclusion: The client is operating above their break-even limit, yielding a positive annual EBITDA runrate of $${(explicitEbitdaResult / 1000000).toFixed(2)} Million.
                                 </div>
-                                <ul class="list-decimal pl-5 space-y-2 text-slate-700">
-                                    <li><strong>Acknowledge & Validate:</strong> State that their concern is entirely valid and represents the most significant operational hurdle of the phase.</li>
-                                    <li><strong>Phased Pilot Gateway:</strong> Propose a "stage-gate" rollout. We limit the initial launch to a controlled regional market, ensuring exposure to their specific risk is capped at 5% of global operations.</li>
-                                    <li><strong>Governance Committee:</strong> Offer to install the ${selectedPersona.title} as the chair of a dedicated steering committee that holds veto power over moving from Phase 1 to Phase 2 if strict thresholds aren't met.</li>
-                                    <li><strong>Insurance/Hedging (If applicable):</strong> Propose specific structural hedges (e.g., vendor performance bonds, specialized cyber insurance, or forward contracts) to transfer the risk off the client's balance sheet.</li>
+                            </div>`,
+                
+                q3_prompt: `Analyze the generated business intelligence chart. What key data trends or operational anomalies stand out, and what primary factors might be driving them?`,
+                q3_answer: `<div class="space-y-3">
+                                <p class="font-semibold text-gray-900">Data Interpretation Matrix:</p>
+                                <ul class="list-disc pl-5 space-y-2 text-slate-700">
+                                    <li><strong class="text-[#051c2c]">Core Data Trend:</strong> The exhibit identifies significant variance across operating regions, showing narrow cost profiles in early steps that quickly expand later. This indicates unexpected execution friction as operations scale.</li>
+                                    <li><strong class="text-[#051c2c]">Root Cause Analysis:</strong> These changes typically stem from coordination friction across legacy software architectures, localized labor bottlenecks, or shifting tariff structures within regional supply networks.</li>
                                 </ul>
+                            </div>`,
+                
+                recommendation_prompt: `What long-term operational risks, competitive counter-actions, or execution hurdles could impact this transformation strategy, and how should the client prepare for them?`,
+                recommendation_answer: `<div class="space-y-4">
+                                <div class="bg-[#051c2c] text-white p-4 rounded font-medium text-xs border-l-4 border-[#005f9e]">
+                                    <strong>Strategic Risk Assessment Rubric:</strong><br>
+                                    A top-tier recommendation must look beyond immediate financial modeling to evaluate downstream operational hurdles and structural market shifts.
+                                </div>
+                                <div>
+                                    <p class="font-bold text-xs uppercase tracking-wider text-slate-500 mb-1">Identified Strategic Risks:</p>
+                                    <ul class="list-decimal pl-5 space-y-1 text-slate-700">
+                                        <li><strong class="text-gray-900">Competitor Repositioning:</strong> Aggressive price cuts from tier-1 competitors could compress margins and push out payback periods.</li>
+                                        <li><strong class="text-gray-900">Execution Friction:</strong> Complexities during the transition of old enterprise software systems could delay deployment timelines.</li>
+                                        <li><strong class="text-gray-900">Supply Chain Strains:</strong> Volatility in global input prices could offset early savings from sourcing initiatives.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-xs uppercase tracking-wider text-slate-500 mb-1">Mitigating Next Steps:</p>
+                                    <ul class="list-disc pl-5 space-y-1 text-slate-700">
+                                        <li>Launch a comprehensive competitor tracking program to spot pricing shifts early.</li>
+                                        <li>Run a phased roll-out strategy for new technology systems to limit potential disruptions to core operations.</li>
+                                        <li>Secure long-term forward supply contracts to lock in baseline material pricing.</li>
+                                    </ul>
+                                </div>
                             </div>`,
                 chartType: targetedChartType,
-                chartConfig: chartConfig
+                chartConfig: calculatedChartConfig
             };
         }
     </script>
