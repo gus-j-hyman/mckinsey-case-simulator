@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Case Coach | McKinsey Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        mckinsey: { dark: '#051c2c', blue: '#005f9e', light: '#f4f6f8' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f4f6f8; }
+        .reveal-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; }
+        .reveal-content.open { max-height: 1000px; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <nav class="bg-mckinsey-dark text-white p-4 shadow-md">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-wide">McKinsey Case Simulator</h1>
+            <span class="text-sm text-gray-300">Generative AI Portal</span>
+        </div>
+    </nav>
+
+    <header class="max-w-5xl mx-auto mt-8 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <h2 class="text-lg font-semibold mb-4 text-mckinsey-dark">Generate Custom Case</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+                <select id="industry-select" class="w-full border-gray-300 rounded-md shadow-sm p-2 border focus:border-mckinsey-blue focus:ring-1 focus:ring-mckinsey-blue outline-none">
+                    <option value="Healthcare">Healthcare / Pharma</option>
+                    <option value="Energy">Energy / Renewables</option>
+                    <option value="Tech">Tech / Digital</option>
+                    <option value="CPG">Consumer Packaged Goods</option>
+                    <option value="PE">Private Equity / Operations</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Case Type</label>
+                <select id="type-select" class="w-full border-gray-300 rounded-md shadow-sm p-2 border focus:border-mckinsey-blue focus:ring-1 focus:ring-mckinsey-blue outline-none">
+                    <option value="Profitability">Profitability / Turnaround</option>
+                    <option value="M&A">Mergers & Acquisitions</option>
+                    <option value="MarketEntry">Market Entry</option>
+                    <option value="Pricing">Pricing Strategy</option>
+                </select>
+            </div>
+            <div class="flex items-end">
+                <button onclick="generateCase()" class="w-full bg-mckinsey-blue hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-200">
+                    Generate Case
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="case-container" class="max-w-5xl mx-auto mt-8 mb-16 hidden">
+        </main>
+
+    <script>
+        let currentChart = null;
+
+        // Toggles the "Reveal Answer" accordion
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            const btn = document.getElementById('btn-' + id);
+            if (el.classList.contains('open')) {
+                el.classList.remove('open');
+                btn.innerHTML = 'Reveal Answer &#9662;';
+            } else {
+                el.classList.add('open');
+                btn.innerHTML = 'Hide Answer &#9652;';
+            }
+        }
+
+        // Mock AI Generator Engine
+        function generateCase() {
+            const industry = document.getElementById('industry-select').value;
+            const type = document.getElementById('type-select').value;
+            const container = document.getElementById('case-container');
+            
+            // Show container
+            container.classList.remove('hidden');
+
+            // In a real app, you would hit your LLM API here. 
+            // We simulate a generated payload mapped to the McKinsey structure.
+            const caseData = simulateLLMPayload(industry, type);
+            
+            container.innerHTML = `
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-6 border-t-4 border-t-mckinsey-blue">
+                    <h2 class="text-3xl font-bold text-mckinsey-dark mb-4">${caseData.title}</h2>
+                    
+                    <h3 class="text-xl font-semibold mb-2 mt-6">Client Goal</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">${caseData.clientGoal}</p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">Situation Description</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">${caseData.situation}</p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">McKinsey Study</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">${caseData.study}</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-mckinsey-blue p-4 mt-6">
+                        <p class="text-sm text-mckinsey-dark font-medium"><strong>Helpful hint:</strong> Write down important information. Feel free to ask the interviewer to explain anything that is not clear to you.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-mckinsey-dark">Question 1: Structuring</h3>
+                    <p class="text-gray-700 mb-4">${caseData.q1.prompt}</p>
+                    <button id="btn-ans-1" onclick="toggleAnswer('ans-1')" class="text-mckinsey-blue font-semibold hover:text-blue-800 transition">Reveal Answer &#9662;</button>
+                    <div id="ans-1" class="reveal-content text-gray-700 border-t border-gray-100 mt-2">
+                        <div class="bg-gray-50 p-4 rounded mt-2 prose max-w-none">
+                            ${caseData.q1.answer}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-mckinsey-dark">Question 2: Quantitative Analysis</h3>
+                    <p class="text-gray-700 mb-6">${caseData.q2.prompt}</p>
+                    
+                    <div class="w-full md:w-3/4 mx-auto mb-8">
+                        <canvas id="exhibitChart"></canvas>
+                    </div>
+
+                    <button id="btn-ans-2" onclick="toggleAnswer('ans-2')" class="text-mckinsey-blue font-semibold hover:text-blue-800 transition">Reveal Answer &#9662;</button>
+                    <div id="ans-2" class="reveal-content text-gray-700 border-t border-gray-100 mt-2">
+                        <div class="bg-gray-50 p-4 rounded mt-2 prose max-w-none">
+                            ${caseData.q2.answer}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Render Advanced Executive Chart (e.g., Waterfall for Profitability)
+            renderChart(type);
+        }
+
+        // Simulates the structured JSON output you will prompt your LLM to create
+        function simulateLLMPayload(industry, type) {
+            return {
+                title: `${industry} ${type} Strategy`,
+                clientGoal: `Our client is a global leader in the ${industry} sector. They have approached McKinsey to evaluate a critical strategic pivot related to ${type.toLowerCase()}.`,
+                situation: `The ${industry} market has seen unprecedented disruption over the last 36 months. Margins are compressing, and traditional supply chains are strained. The client operates globally with $15B in annual revenue but has seen growth stagnate at 1.5% YoY.`,
+                study: `The CEO has asked our team to evaluate the core drivers of this stagnation and determine the financial viability of a proposed turnaround initiative.`,
+                q1: {
+                    prompt: "What key factors should the client consider when evaluating this strategic pivot?",
+                    answer: `<strong>Ideal MECE Framework:</strong><br><br>
+                             <strong>1. Financial Viability:</strong><br>
+                             - Revenue Impact (Volume vs. Price)<br>
+                             - Cost structures (Fixed vs. Variable changes)<br>
+                             - CapEx requirements and payback period<br><br>
+                             <strong>2. Market & Competition:</strong><br>
+                             - Competitor reactions and existing market share<br>
+                             - Customer segmentation and willingness to pay<br><br>
+                             <strong>3. Internal Capabilities & Execution Risk:</strong><br>
+                             - Supply chain readiness<br>
+                             - Regulatory hurdles in the ${industry} sector`
+                },
+                q2: {
+                    prompt: `The team has compiled an exhibit showing the bridge from current gross revenue to projected net profit after implementing the new initiative. Based on the chart above and assuming a total addressable market of 50 million users, what percentage of the market must we capture at a $200 price point to break even on the $500M SG&A and R&D costs?`,
+                    answer: `<strong>Math Execution:</strong><br>
+                             1. Total Fixed Costs = $500M<br>
+                             2. Price Point = $200<br>
+                             3. Break-even Volume = $500M / $200 = 2.5 million users<br>
+                             4. Target Market Share = 2.5M / 50M = <strong>5% market share</strong> required to break even.`
+                }
+            };
+        }
+
+        // Advanced Chart Rendering Logic (Chart.js)
+        function renderChart(type) {
+            const ctx = document.getElementById('exhibitChart').getContext('2d');
+            
+            if (currentChart) { currentChart.destroy(); }
+
+            // Using a Floating Bar Chart to simulate a Financial Waterfall Chart
+            // Data structure: [start_value, end_value]
+            const data = {
+                labels: ['Base Revenue', 'Price Increase', 'Volume Drop', 'COGS Synergy', 'Net Result'],
+                datasets: [{
+                    label: 'Financial Impact ($M)',
+                    data: [
+                        [0, 1000],       // Base Revenue (Total)
+                        [1000, 1250],    // Price Increase (Positive)
+                        [1100, 1250],    // Volume Drop (Negative impact drops it down)
+                        [1100, 1300],    // COGS Synergy (Positive)
+                        [0, 1300]        // Net Result (Total)
+                    ],
+                    backgroundColor: [
+                        '#051c2c', // Dark blue (Total)
+                        '#00a9e0', // Light blue (Positive)
+                        '#d9534f', // Red (Negative)
+                        '#00a9e0', // Light blue (Positive)
+                        '#051c2c'  // Dark blue (Total)
+                    ],
+                    borderWidth: 1,
+                    barPercentage: 0.8
+                }]
+            };
+
+            currentChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Exhibit 1: Projected Profitability Bridge ($M)',
+                            font: { family: 'Inter', size: 16, weight: 'bold' }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw[1] - context.raw[0];
+                                    return ' Impact: $' + Math.abs(val) + 'M';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#e5e7eb' },
+                            title: { display: true, text: 'USD Millions' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
