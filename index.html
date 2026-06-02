@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McKinsey Case Interview Bot | Generation Engine</title>
+    <title>McKinsey Style Case Bot</title>
     <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js Engine -->
@@ -41,9 +41,9 @@
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="w-3 h-6 bg-[#005f9e]"></div>
-                <span class="text-sm font-bold uppercase tracking-widest text-gray-100">McKinsey & Company</span>
+                <span class="text-sm font-bold uppercase tracking-widest text-gray-100">McKinsey Style Case Bot</span>
             </div>
-            <span class="text-xs font-mono text-[#005f9e] bg-slate-900/80 px-3 py-1 rounded border border-slate-800 font-semibold">Interactive Practice Suite</span>
+            <span class="text-xs font-mono text-[#005f9e] bg-slate-900/80 px-3 py-1 rounded border border-slate-800 font-semibold">AI Deployment Environment</span>
         </div>
     </nav>
 
@@ -52,11 +52,11 @@
         <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
             <h1 class="text-lg font-bold text-[#051c2c] mb-4 flex items-center">
                 <span class="w-2 h-2 bg-[#005f9e] rounded-full mr-2"></span>
-                Select Case Study Specifications
+                Case Strategy Parameters
             </h1>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Target Industry</label>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Target Industry Vertical</label>
                     <select id="industry-select" class="w-full bg-white border border-gray-300 rounded p-2.5 text-sm font-medium text-gray-800 focus:ring-1 focus:ring-[#005f9e] focus:border-[#005f9e] outline-none cursor-pointer">
                         <option value="Consumer Packaged Goods (CPG)">Consumer Packaged Goods (CPG)</option>
                         <option value="Public Sector & Government Strategy">Public Sector & Government Strategy</option>
@@ -91,7 +91,7 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Case Formulation Type</label>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Strategic Case Type</label>
                     <select id="type-select" class="w-full bg-white border border-gray-300 rounded p-2.5 text-sm font-medium text-gray-800 focus:ring-1 focus:ring-[#005f9e] focus:border-[#005f9e] outline-none cursor-pointer">
                         <option value="Profitability / Operational Turnaround">Profitability / Operational Turnaround</option>
                         <option value="Market Entry Strategy">Market Entry Strategy</option>
@@ -122,7 +122,6 @@
     <script>
         let globalChartInstance = null;
 
-        // Structured UI Expand/Collapse Framework
         function toggleAnswerContainer(id) {
             const content = document.getElementById(id);
             const button = document.getElementById('btn-' + id);
@@ -147,15 +146,13 @@
             const workspace = document.getElementById('workspace');
             
             workspace.classList.remove('hidden');
-            
-            // Build out robust randomized data properties per variation click
             const generatedCaseData = parseCaseEngineLogic(industry, caseType);
             
             workspace.innerHTML = `
-                <!-- SECTION 1: EXECUTIVE BRIEFING SCENARIO -->
+                <!-- STRATEGIC BRIEFING OVERVIEW -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="bg-[#051c2c] text-white p-6 border-b border-gray-800">
-                        <span class="text-xs font-bold uppercase tracking-widest text-[#005f9e] bg-[#051c2c] block mb-1">${caseType} Portfolio</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#005f9e] bg-[#051c2c] block mb-1">Active Case Diagnostic Suite</span>
                         <h2 class="text-2xl font-bold tracking-tight">${generatedCaseData.title}</h2>
                     </div>
                     <div class="p-8 space-y-6">
@@ -178,10 +175,10 @@
                     </div>
                 </div>
 
-                <!-- SECTION 2: QUESTION 1 STRUCTURING / MECE -->
+                <!-- QUESTION 1 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Exhibit Element 01 // Framework Formulation</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 1</span>
                         <span class="text-xs font-mono text-gray-400">Qualitative Focus</span>
                     </div>
                     <div class="p-8">
@@ -196,10 +193,10 @@
                     </div>
                 </div>
 
-                <!-- SECTION 3: QUESTION 2 QUANTITATIVE MATHEMATICS -->
+                <!-- QUESTION 2 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Exhibit Element 02 // Quantitative Assessment Matrix</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 2</span>
                         <span class="text-xs font-mono text-gray-400">Numerical Core</span>
                     </div>
                     <div class="p-8">
@@ -214,22 +211,19 @@
                     </div>
                 </div>
 
-                <!-- SECTION 4: QUESTION 3 DATA EXHIBIT RENDERING NODE -->
+                <!-- QUESTION 3 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Exhibit Element 03 // Business Intelligence Visualization</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 3</span>
                         <span class="text-xs font-mono text-gray-400">Chart Interface</span>
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-bold text-[#051c2c] mb-6">${generatedCaseData.q3_prompt}</h3>
-                        
-                        <!-- Fixed Height Canvas Wrapper Ensuring Visibility Layer -->
                         <div class="w-full bg-white p-4 rounded border border-gray-200 shadow-inner flex items-center justify-center min-h-[400px] mb-6 relative">
                             <div class="w-full h-[360px] relative">
                                 <canvas id="canvasRenderZone"></canvas>
                             </div>
                         </div>
-
                         <button id="btn-ans-3" onclick="toggleAnswerContainer('ans-3')" class="w-full flex justify-between items-center border border-gray-200 rounded p-4 text-sm font-semibold text-[#005f9e] hover:bg-slate-50 transition bg-white shadow-sm">
                             <span>Reveal Ideal Answer &bull; Data Interpretation Framework</span>
                             <span id="ind-ans-3" class="text-xs font-mono">&#9662;</span>
@@ -240,16 +234,16 @@
                     </div>
                 </div>
 
-                <!-- SECTION 5: FINAL STRATEGIC SYNTHESIS -->
+                <!-- QUESTION 4 SECTION -->
                 <div class="bg-white rounded-lg border border-gray-200 shadow-sm mb-8 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 bg-slate-50/50 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Exhibit Element 04 // Case Synthesis Presentation</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Formulation Element // Question 4</span>
                         <span class="text-xs font-mono text-gray-400">Synthesis Rubric</span>
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-bold text-[#051c2c] mb-6">${generatedCaseData.recommendation_prompt}</h3>
                         <button id="btn-ans-4" onclick="toggleAnswerContainer('ans-4')" class="w-full flex justify-between items-center border border-gray-200 rounded p-4 text-sm font-semibold text-[#005f9e] hover:bg-slate-50 transition bg-white shadow-sm">
-                            <span>Reveal Ideal Answer &bull; Executive Board Delivery</span>
+                            <span>Reveal Ideal Answer &bull; Strategic Expansion Strategy</span>
                             <span id="ind-ans-4" class="text-xs font-mono">&#9662;</span>
                         </button>
                         <div id="ans-4" class="reveal-content bg-white">
@@ -259,10 +253,7 @@
                 </div>
             `;
 
-            // Draw chart onto canvas
             executeChartEngineAllocation(generatedCaseData.chartType, generatedCaseData.chartConfig);
-            
-            // Scroll view to focus cleanly on generated case layout
             workspace.scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -331,7 +322,7 @@
                         }]
                     };
                     chartJsConfig.options.scales = {
-                        y: { reverse: true, title: { display: true, text: 'Cost Rank Depth / Operational Efficiency Loss (Inverted Base)', font: { weight: '600' } } }
+                        y: { reverse: true, title: { display: true, text: 'Operational Cost Depth Rank (Inverted)', font: { weight: '600' } } }
                     };
                     break;
 
@@ -345,9 +336,6 @@
                             backgroundColor: config.labels.map((_, i) => i === 0 || i === config.labels.length - 1 ? '#051c2c' : '#005f9e')
                         }]
                     };
-                    chartJsConfig.options.scales = {
-                        y: { title: { display: true, text: 'Value Reconciled ($M)', font: { weight: '600' } } }
-                    };
                     break;
 
                 case 'dualAxis':
@@ -360,8 +348,8 @@
                         ]
                     };
                     chartJsConfig.options.scales = {
-                        y: { type: 'linear', position: 'left', title: { display: true, text: 'Absolute Scale Metric Value ($M)' } },
-                        y1: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'Percentage Boundary Scale (%)' } }
+                        y: { type: 'linear', position: 'left', title: { display: true, text: 'Absolute Metric Value ($M)' } },
+                        y1: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'Percentage Scale (%)' } }
                     };
                     break;
 
@@ -377,7 +365,7 @@
                     };
                     chartJsConfig.options.scales = {
                         x: { stacked: true },
-                        y: { stacked: true, max: 100, title: { display: true, text: 'Percentage Volume Allocation Split (%)' } }
+                        y: { stacked: true, max: 100, title: { display: true, text: 'Percentage Split (%)' } }
                     };
                     break;
 
@@ -507,77 +495,96 @@
             globalChartInstance = new Chart(ctx, chartJsConfig);
         }
 
-        // Deterministic Simulation Engine creating context-specific outputs per variation choice
         function parseCaseEngineLogic(industry, type) {
-            // Recalculate unique math numbers dynamically to preserve variety and accuracy
-            const fixedCostMultiplier = Math.floor(Math.random() * 5) + 1; // 1 to 5
-            const computedFixedCost = fixedCostMultiplier * 20; // e.g. 20M, 40M, 60M
-            const unitRetailPrice = (Math.random() * 3 + 2).toFixed(2); // e.g. 2.50 to 5.50
-            const unitVariableCost = (unitRetailPrice - (Math.random() * 1 + 1)).toFixed(2); // creates clear positive margin delta
-            const explicitContributionMargin = (unitRetailPrice - unitVariableCost).toFixed(2);
-            const verifiedTargetBreakevenVolume = ((computedFixedCost * 1000000) / explicitContributionMargin).toLocaleString();
+            // Context Pools for Procedural Generation Matrix
+            const fakeCompanies = [
+                "AeroNova Solutions", "Zenith Biologics", "VeloFoods Global", "Horizon Sovereign Fund", 
+                "Vanguard Agritech", "Apex Retail Partners", "Luxis Premium Cosmetics", "Integra Health Systems", 
+                "Solari Power Infrastructure", "TelcoLink International", "NovaStream Entertainment", 
+                "Stera Advanced Materials", "OmniChannel Logistics", "CoreQuantum Analytics"
+            ];
+            const corporateName = fakeCompanies[Math.floor(Math.random() * fakeCompanies.length)];
+
+            const dynamicIssues = [
+                "is experiencing structural changes due to intense near-shore competition and shifting global trade rules.",
+                "has seen operational margin compression as legacy technology costs outpace digital adoption lines.",
+                "is navigating regulatory overhead disruptions alongside a cooling domestic capital deployment market.",
+                "needs to assess their core footprint asset strategy as capital returns slide lower.",
+                "is facing new distribution network demands that challenge their traditional asset layouts."
+            ];
+            const issueParagraph = dynamicIssues[Math.floor(Math.random() * dynamicIssues.length)];
+
+            // Mathematical Parameter Formulation
+            const baseFixedCost = (Math.floor(Math.random() * 4) + 2) * 20; // 40M, 60M, 80M, 100M
+            const globalVolumeBase = Math.floor(Math.random() * 5) + 8; // 8M to 12M units
+            const wholesalePrice = (Math.random() * 50 + 40).toFixed(2); // $40 to $90
+            const variableOverheadCost = (wholesalePrice * 0.65).toFixed(2); // 65% of wholesale price
+            const unitMargin = (wholesalePrice - variableOverheadCost).toFixed(2);
+            
+            const breakEvenUnits = Math.round((baseFixedCost * 1000000) / unitMargin);
+            const totalRevenueAtVolume = (globalVolumeBase * 1000000 * wholesalePrice);
+            const totalVariableAtVolume = (globalVolumeBase * 1000000 * variableOverheadCost);
+            const explicitEbitdaResult = (totalRevenueAtVolume - totalVariableAtVolume - (baseFixedCost * 1000000));
 
             const chartPool = ['bubble', 'inverted', 'waterfall', 'dualAxis', 'stackedBar100', 'radar', 'scatter', 'stepline', 'polarArea', 'doughnut', 'line', 'bar', 'groupedBar', 'mixed', 'area'];
             const targetedChartType = chartPool[Math.floor(Math.random() * chartPool.length)];
 
-            // Setup dynamic chart metrics mapping
+            // Setup dynamic chart configurations
             let calculatedChartConfig = {
-                title: `Exhibit: Operational Cost & Market Performance Metric Portfolio for ${industry}`,
-                labels: ['Segment Alpha', 'Segment Beta', 'Segment Gamma', 'Segment Delta', 'Segment Epsilon'],
-                datasets: [{ label: 'Macro Value Impact Pool', data: [90, 140, 75, 210, 285], extraData: [12, 28, 35, 50, 75] }]
+                title: `Performance Metrics Core Analysis Portfolio`,
+                labels: ['FY22 Base', 'FY23 Delta', 'FY24 Shift', 'FY25 Projection', 'FY26 Target'],
+                datasets: [{ label: 'Macro Operational Impact Track', data: [110, 160, 85, 230, 310], extraData: [14, 25, 40, 55, 80] }]
             };
 
             if (targetedChartType === 'waterfall') {
-                calculatedChartConfig.labels = ['Gross Revenue Base', 'Pricing Architecture Adjustments', 'Churn Loss Delta', 'Sourcing Synergies Leverage', 'Net Operating Baseline'];
-                calculatedChartConfig.datasets[0].data = [[0, 600], [600, 780], [680, 780], [680, 850], [0, 850]];
+                calculatedChartConfig.labels = ['Gross Segment Base', 'Pricing Plan Adjustments', 'Churn Overhead Impact', 'Sourcing Supply Synergies', 'Net Performance Operating Baseline'];
+                calculatedChartConfig.datasets[0].data = [[0, 700], [700, 920], [800, 920], [800, 1050], [0, 1050]];
             } else if (targetedChartType === 'bubble') {
                 calculatedChartConfig.datasets = [
-                    { label: 'Target Core Unit Segments (Core Tier)', data: [{ x: 30, y: 55, r: 18 }, { x: 50, y: 85, r: 24 }, { x: 80, y: 70, r: 28 }] },
-                    { label: 'Secondary Marketplace Variations', data: [{ x: 20, y: 25, r: 12 }, { x: 65, y: 40, r: 16 }, { x: 90, y: 95, r: 20 }] }
+                    { label: 'Strategic Investment Segments', data: [{ x: 35, y: 60, r: 20 }, { x: 55, y: 90, r: 25 }, { x: 75, y: 75, r: 30 }] },
+                    { label: 'Alternative Regional Opportunities', data: [{ x: 25, y: 30, r: 15 }, { x: 70, y: 45, r: 18 }, { x: 85, y: 85, r: 22 }] }
                 ];
-            } else if (targetedChartType === 'scatter') {
-                calculatedChartConfig.datasets[0].data = [{ x: 12, y: 25 }, { x: 18, y: 40 }, { x: 30, y: 50 }, { x: 45, y: 65 }, { x: 70, y: 85 }];
             } else if (targetedChartType === 'stackedBar100') {
-                calculatedChartConfig.labels = ['Domestic Markets', 'Nearshore Corridors', 'Offshore Footprints'];
+                calculatedChartConfig.labels = ['Region Alpha', 'Region Beta', 'Region Gamma'];
                 calculatedChartConfig.datasets = [
-                    { label: 'Fixed Structural Overhead Allocation', data: [45, 40, 35] },
-                    { label: 'Variable Sourcing Production Cost Base', data: [35, 30, 45] },
-                    { label: 'Pure Operational Free Cash Margin Flow', data: [20, 30, 20] }
+                    { label: 'Fixed Structural Costs Profile', data: [40, 45, 35] },
+                    { label: 'Variable Cost Allocations Base', data: [40, 30, 45] },
+                    { label: 'Operating Free Cash Margin Flow', data: [20, 25, 20] }
                 ];
             }
 
             return {
-                title: `${industry}: Advanced Strategic Execution Matrix`,
-                clientGoal: `Our client is an executive leadership team navigating a complex operational ecosystem within the global ${industry} sector, seeking an end-to-end evaluation of their current ${type.toLowerCase()} framework.`,
-                situation: `<p>The client is navigating a major shift in the structural dynamics of the modern ${industry} ecosystem. Recent adjustments in global supply networks, changing distribution rules, and shifting customer demands have slowed historical top-line growth to an annual rate of 1.2%. This performance is below long-term industry expectations and is putting pressure on legacy business segments.</p>
-                            <p>Operational execution costs have also increased over the past 24 months. Higher spending on legacy technologies, raw materials, and cross-border logistics is narrowing gross operating margins. The executive team needs a clear view of their baseline activities to evaluate whether a major operational overhaul is viable.</p>
+                title: `Strategic Transformation Initiative Analysis`,
+                clientGoal: `${corporateName} wants to redesign its strategic positioning and commercial models next year to improve long-term financial results and scale operations safely.`,
+                situation: `<p>${corporateName} ${issueParagraph}</p>
+                            <p>Operating costs have risen unexpectedly over the past 24 months. Higher expenditures on technology infrastructure, core materials, and cross-border logistics continue to narrow historical gross operating margins. The executive leadership team needs a clear view of their baseline performance to evaluate whether a major restructuring plan is viable.</p>
                             <p>To reverse this trend and protect market share, leadership is exploring structural options. These plans require a rigorous look at asset utilization, fixed operating costs, and long-term investment profiles across all business units.</p>`,
-                study: `The client has engaged McKinsey to run a structural diagnosis across their portfolio, evaluate their options, and build a scalable operational roadmap to maximize value from this ${type.toLowerCase()} initiative.`,
+                study: `How can ${corporateName} reshape its business lines and asset allocations to counter margin pressure and build a sustainable long-term business model?`,
                 
-                q1_prompt: `What core structural blocks and market parameters should the McKinsey team include to build a comprehensive, mutually exclusive, and collectively exhaustive (MECE) diagnostic framework for this project?`,
+                q1_prompt: `What additional operational details, strategic constraints, and core market data points should the team evaluate to support this strategic assessment?`,
                 q1_answer: `<div class="space-y-4">
-                                <p class="font-bold text-[#051c2c] text-sm uppercase tracking-wide">Structured Diagnostic Architecture Framework (MECE Compliant):</p>
+                                <p class="font-bold text-[#051c2c] text-sm uppercase tracking-wide">Strategic Information Gathering Matrix (MECE Framework Template):</p>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
                                     <div class="bg-white p-4 border border-gray-200 rounded shadow-sm">
-                                        <p class="font-semibold text-[#005f9e] mb-1">1. Internal Cost & Asset Structures</p>
+                                        <p class="font-semibold text-[#005f9e] mb-1">1. Granular Financial Profiles</p>
                                         <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600">
                                             <li>Fixed overhead tracking and legacy system costs.</li>
                                             <li>Variable cost structures and labor usage rates.</li>
-                                            <li>Capacity limits across core regions.</li>
+                                            <li>Asset depreciation timelines and regional lease metrics.</li>
                                         </ul>
                                     </div>
                                     <div class="bg-white p-4 border border-gray-200 rounded shadow-sm">
-                                        <p class="font-semibold text-[#005f9e] mb-1">2. Market & Commercial Drivers</p>
+                                        <p class="font-semibold text-[#005f9e] mb-1">2. Competitive Landscape Shifts</p>
                                         <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600">
-                                            <li>Competitor pricing moves and strategy.</li>
-                                            <li>Customer segment shifts and volume trends.</li>
-                                            <li>Value pool changes across channels.</li>
+                                            <li>Competitor price moves and market share dynamics.</li>
+                                            <li>Customer segment churn rates and cost to acquire.</li>
+                                            <li>Value pool changes across regional supply corridors.</li>
                                         </ul>
                                     </div>
                                     <div class="bg-white p-4 border border-gray-200 rounded shadow-sm">
-                                        <p class="font-semibold text-[#005f9e] mb-1">3. Execution Risks & Guardrails</p>
+                                        <p class="font-semibold text-[#005f9e] mb-1">3. Structural Hurdles</p>
                                         <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600">
-                                            <li>Regulatory changes in the ${industry} space.</li>
+                                            <li>Regulatory changes and compliance requirements.</li>
                                             <li>Supply network risks and logistical constraints.</li>
                                             <li>Technology integration timelines and talent gaps.</li>
                                         </ul>
@@ -585,46 +592,55 @@
                                 </div>
                             </div>`,
                 
-                q2_prompt: `The client's primary processing facility operates with a structural step-function baseline fixed cost of $${computedFixedCost} Million. Variable costs are locked at $${unitVariableCost} per finished unit. If the market sets an executive wholesale price point of $${unitRetailPrice} per finished unit, what total production volume is required to break even?`,
+                q2_prompt: `The client's central asset operates with a total annual fixed infrastructure cost of $${baseFixedCost} Million. Current annual product output is running at exactly ${globalVolumeBase} Million units. The current market sets a wholesale contract price point of $${wholesalePrice} per unit, while unit variable operating costs are locked at $${variableOverheadCost}. Based on these metrics, what is the current annual EBITDA runrate, and what total volume is required to break even?`,
                 q2_answer: `<div class="space-y-3">
                                 <p class="font-semibold text-gray-900">Mathematical Calculation Process:</p>
-                                <p>1. Find the unit contribution margin: <br><span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">Contribution Margin = Wholesale Price - Unit Variable Cost</span><br>
-                                <span class="font-mono font-bold text-gray-800">$${unitRetailPrice} - $${unitVariableCost} = $${explicitContributionMargin} per unit</span></p>
-                                <p>2. Calculate the baseline break-even volume: <br><span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">Break-Even Volume = Total Fixed Costs / Unit Contribution Margin</span><br>
-                                <span class="font-mono font-bold text-gray-800">$${computedFixedCost},000,000 / $${explicitContributionMargin} = ${verifiedTargetBreakevenVolume} Units</span></p>
+                                <p>1. Find the unit contribution margin: <br>
+                                <span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">Contribution Margin = Wholesale Price ($${wholesalePrice}) - Unit Variable Cost ($${variableOverheadCost})</span><br>
+                                <span class="font-mono font-bold text-gray-800">$${wholesalePrice} - $${variableOverheadCost} = $${unitMargin} per unit</span></p>
+                                
+                                <p>2. Calculate current EBITDA performance: <br>
+                                <span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">EBITDA = (Volume &times; Unit Margin) - Fixed Costs</span><br>
+                                <span class="font-mono text-gray-800">(${globalVolumeBase}M &times; $${unitMargin}) - $${baseFixedCost}M = </span><span class="font-mono font-bold text-gray-800">$${(explicitEbitdaResult / 1000000).toFixed(2)} Million</span></p>
+                                
+                                <p>3. Calculate break-even volume limits: <br>
+                                <span class="font-mono bg-gray-100 px-2 py-1 rounded inline-block my-1 text-xs">Break-Even Volume = Fixed Costs ($${baseFixedCost}M) / Unit Margin ($${unitMargin})</span><br>
+                                <span class="font-mono font-bold text-gray-800">${breakEvenUnits.toLocaleString()} Units</span></p>
+                                
                                 <div class="p-3 bg-blue-50 border border-blue-200 text-[#005f9e] font-semibold rounded text-xs">
-                                    Conclusion: The operations team must achieve a production volume of exactly ${verifiedTargetBreakevenVolume} units to break even on this operational footprint.
+                                    Conclusion: The client is operating above their break-even limit, yielding a positive annual EBITDA runrate of $${(explicitEbitdaResult / 1000000).toFixed(2)} Million.
                                 </div>
                             </div>`,
                 
-                q3_prompt: `Examine the generated exhibit layout carefully. What are the key non-obvious data trends shown, and what risks could they introduce during implementation?`,
+                q3_prompt: `Analyze the generated business intelligence chart. What key data trends or operational anomalies stand out, and what primary factors might be driving them?`,
                 q3_answer: `<div class="space-y-3">
                                 <p class="font-semibold text-gray-900">Data Interpretation Matrix:</p>
                                 <ul class="list-disc pl-5 space-y-2 text-slate-700">
                                     <li><strong class="text-[#051c2c]">Core Data Trend:</strong> The exhibit identifies significant variance across operating regions, showing narrow cost profiles in early steps that quickly expand later. This indicates unexpected execution friction as operations scale.</li>
-                                    <li><strong class="text-[#051c2c]">Implementation Risks:</strong> Early cost reductions may lead to overconfidence, leaving the project under-resourced for the more capital-intensive deployment phases.</li>
+                                    <li><strong class="text-[#051c2c]">Root Cause Analysis:</strong> These changes typically stem from coordination friction across legacy software architectures, localized labor bottlenecks, or shifting tariff structures within regional supply networks.</li>
                                 </ul>
                             </div>`,
                 
-                recommendation_prompt: `Synthesize your findings and present a clear, executive-ready final recommendation to the client's board of directors.`,
+                recommendation_prompt: `What long-term operational risks, competitive counter-actions, or execution hurdles could impact this transformation strategy, and how should the client prepare for them?`,
                 recommendation_answer: `<div class="space-y-4">
                                 <div class="bg-[#051c2c] text-white p-4 rounded font-medium text-xs border-l-4 border-[#005f9e]">
-                                    <strong>Executive Recommendation Lead-In:</strong><br>
-                                    Proceed with the proposed transformation program immediately to capture the identified $${explicitContributionMargin} unit margin structure and protect long-term market share.
+                                    <strong>Strategic Risk Assessment Rubric:</strong><br>
+                                    A top-tier recommendation must look beyond immediate financial modeling to evaluate downstream operational hurdles and structural market shifts.
                                 </div>
                                 <div>
-                                    <p class="font-bold text-xs uppercase tracking-wider text-slate-500 mb-1">Supporting Pillars:</p>
+                                    <p class="font-bold text-xs uppercase tracking-wider text-slate-500 mb-1">Identified Strategic Risks:</p>
                                     <ul class="list-decimal pl-5 space-y-1 text-slate-700">
-                                        <li>The break-even target of ${verifiedTargetBreakevenVolume} units matches existing production capabilities.</li>
-                                        <li>Optimizing variable cost structures helps insulate core operations against pricing pressure from competitors.</li>
-                                        <li>The project model confirms a solid return on capital within 24 months of deployment.</li>
+                                        <li><strong class="text-gray-900">Competitor Repositioning:</strong> Aggressive price cuts from tier-1 competitors could compress margins and push out payback periods.</li>
+                                        <li><strong class="text-gray-900">Execution Friction:</strong> Complexities during the transition of old enterprise software systems could delay deployment timelines.</li>
+                                        <li><strong class="text-gray-900">Supply Chain Strains:</strong> Volatility in global input prices could offset early savings from sourcing initiatives.</li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-xs uppercase tracking-wider text-slate-500 mb-1">Risks &amp; Mitigating Next Steps:</p>
+                                    <p class="font-bold text-xs uppercase tracking-wider text-slate-500 mb-1">Mitigating Next Steps:</p>
                                     <ul class="list-disc pl-5 space-y-1 text-slate-700">
-                                        <li><strong class="text-gray-900">Integration Risk:</strong> Legacy system complexity could delay deployment timelines. <em>Mitigation:</em> Launch an immediate IT systems audit next week.</li>
-                                        <li><strong class="text-gray-900">Supply Risk:</strong> Input price volatility across regions could compress margins. <em>Mitigation:</em> Secure forward contracts to lock in baseline material pricing.</li>
+                                        <li>Launch a comprehensive competitor tracking program to spot pricing shifts early.</li>
+                                        <li>Run a phased roll-out strategy for new technology systems to limit potential disruptions to core operations.</li>
+                                        <li>Secure long-term forward supply contracts to lock in baseline material pricing.</li>
                                     </ul>
                                 </div>
                             </div>`,
